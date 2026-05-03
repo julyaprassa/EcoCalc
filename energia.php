@@ -43,6 +43,7 @@
     <label>Utiliza lâmpadas LED?</label>
     <select class="questionario-select" required>
     <option value="">Selecione</option>
+    <option value=""> </option>
     <option>Sim</option>
     <option>Não</option>
     </select>
