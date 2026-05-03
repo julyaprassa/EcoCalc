@@ -42,6 +42,7 @@
 
     <label>Utiliza lâmpadas LED?</label>
     <select class="questionario-select" required>
+    <option value="">Selecione</option>
     <option value=""> </option>
     <option>Sim</option>
     <option>Não</option>
@@ -49,7 +50,7 @@
 
     <label>Faz uso de energia renovável (placas solares)?</label>
     <select class="questionario-select" required>
-    <option value=""> </option>
+    <option value="">Selecione</option>
     <option>Sim</option>
     <option>Não</option>
     </select>
