@@ -1,6 +1,6 @@
 <?php
 // ============================================================
-//  cadastro.php — Cadastro de novos usuários
+//  login.php — Autenticação de usuários
 // ============================================================
 session_start();
 
@@ -12,65 +12,49 @@ if (!empty($_SESSION['usuario_id'])) {
 
 require_once 'conexao.php';
 
-$erro    = '';
-$sucesso = '';
+$erro = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // --- Coleta e sanitização dos dados ---
-    $nome            = trim($_POST['nome']            ?? '');
-    $email           = trim($_POST['email']           ?? '');
-    $senha           = $_POST['senha']                ?? '';
-    $confirmar_senha = $_POST['confirmar_senha']      ?? '';
+    $email = trim($_POST['email'] ?? '');
+    $senha = $_POST['senha']      ?? '';
 
-    // --- Validações ---
-    if (empty($nome) || empty($email) || empty($senha) || empty($confirmar_senha)) {
-        $erro = 'Preencha todos os campos.';
+    if (empty($email) || empty($senha)) {
+        $erro = 'Preencha e-mail e senha.';
 
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $erro = 'E-mail inválido.';
 
-    } elseif (strlen($senha) < 6) {
-        $erro = 'A senha deve ter pelo menos 6 caracteres.';
-
-    } elseif ($senha !== $confirmar_senha) {
-        $erro = 'As senhas não coincidem.';
-
     } else {
         $conn = conectar();
 
-        // Verifica se o e-mail já está cadastrado
-        $stmt = $conn->prepare('SELECT id FROM usuarios WHERE email = ? LIMIT 1');
+        $stmt = $conn->prepare('SELECT id, nome, email, senha_hash FROM usuarios WHERE email = ? LIMIT 1');
         $stmt->bind_param('s', $email);
         $stmt->execute();
-        $stmt->store_result();
+        $resultado = $stmt->get_result();
 
-        if ($stmt->num_rows > 0) {
-            $erro = 'Este e-mail já está cadastrado.';
-        } else {
-            // Cadastra o novo usuário
-            $senha_hash = password_hash($senha, PASSWORD_BCRYPT);
+        if ($resultado->num_rows === 1) {
+            $usuario = $resultado->fetch_assoc();
 
-            $ins = $conn->prepare('INSERT INTO usuarios (nome, email, senha_hash) VALUES (?, ?, ?)');
-            $ins->bind_param('sss', $nome, $email, $senha_hash);
+            if (password_verify($senha, $usuario['senha_hash'])) {
+                // Login bem-sucedido
+                session_regenerate_id(true); // Previne session fixation
 
-            if ($ins->execute()) {
-                // Faz login automático após o cadastro
-                $_SESSION['usuario_id'] = $ins->insert_id;
-                $_SESSION['nome']       = $nome;
-                $_SESSION['email']      = $email;
+                $_SESSION['usuario_id'] = $usuario['id'];
+                $_SESSION['nome']       = $usuario['nome'];
+                $_SESSION['email']      = $usuario['email'];
 
-                $ins->close();
                 $stmt->close();
                 $conn->close();
 
                 header('Location: paginainicial.php');
                 exit;
             } else {
-                $erro = 'Erro ao cadastrar. Tente novamente.';
+                $erro = 'E-mail ou senha incorretos.';
             }
-
-            $ins->close();
+        } else {
+            // Mantemos a mesma mensagem para não revelar se o e-mail existe
+            $erro = 'E-mail ou senha incorretos.';
         }
 
         $stmt->close();
@@ -88,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <title>Cadastro — EcoCalc</title>
+    <title>Entrar — EcoCalc</title>
     <style>
         body {
             background: linear-gradient(135deg, #2e7d32, #4caf50);
@@ -109,19 +93,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="w3-content" style="max-width:500px">
             <div class="card">
 
-                <h2 class="titulo w3-center">Criar Conta</h2>
-                <p class="w3-center">Cadastre-se para calcular sua pegada de carbono</p>
+                <h2 class="titulo w3-center">Entrar na minha conta</h2>
+                <p class="w3-center">Conecte-se para calcular sua pegada de carbono</p>
 
                 <?php if ($erro): ?>
                     <div class="mensagem-erro"><?= htmlspecialchars($erro) ?></div>
                 <?php endif; ?>
 
-                <form method="POST" action="cadastro.php">
-
-                    <label>Nome</label>
-                    <input class="input" type="text" name="nome"
-                           placeholder="Digite seu nome..."
-                           value="<?= htmlspecialchars($_POST['nome'] ?? '') ?>" required>
+                <form method="POST" action="login.php">
 
                     <label>Email</label>
                     <input class="input" type="email" name="email"
@@ -130,24 +109,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <label>Senha</label>
                     <input class="input" type="password" name="senha"
-                           placeholder="Mínimo 6 caracteres..." required>
-
-                    <label>Confirmar Senha</label>
-                    <input class="input" type="password" name="confirmar_senha"
-                           placeholder="Confirme sua senha..." required>
+                           placeholder="Digite sua senha..." required>
 
                     <br><br>
 
                     <button type="submit" class="botao w3-block">
-                        Concluir cadastro
+                        Entrar
                     </button>
 
                 </form>
 
                 <p class="w3-center" style="margin-top:15px;">
-                    Já possui uma conta?
-                    <a href="login.php" style="color:#2e7d32; text-decoration:none;">
-                        Fazer login
+                    Não possui uma conta?
+                    <a href="cadastro.php" style="color:#2e7d32; text-decoration:none;">
+                        Cadastrar-se
                     </a>
                 </p>
 
