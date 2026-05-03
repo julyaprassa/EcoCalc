@@ -87,4 +87,34 @@ form label {
     box-shadow: 0, 0, 6px rgb(46,125,50,0.3);
 }
 
+/* estilo questionario */
+form.questionario-form .questionario-input,
+form.questionario-form .questionario-select {
+    width: 220px !important; 
+    padding: 10px !important;       
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+form.questionario-form .questionario-input:focus,
+form.questionario-form .questionario-select:focus {
+    border-color: #2e7d32;
+    box-shadow: 0 0 6px rgba(46,125,50,0.3);
+}
+
+form.questionario-form .questionario-select {
+    appearance: none;
+    background-color: #fff;
+}
+
+.questionario-form label {
+    font-size: 17px;
+    font-weight: 500;
+    color: #555; 
+}
+
+
+
 
