@@ -53,7 +53,7 @@
 <!-- Selecionar quantos dias da semana -->
     <label>Quantos dias por semana?</label>
     <select class="questionario-select" required>
-    <option value="">Selecione</option>
+    <option value=""> </option>
     <option>1</option>
     <option>2</option>
     <option>3</option>
@@ -65,7 +65,7 @@
 
     <label>Qual o combustível utilizado?</label>
     <select class="questionario-select" required>
-    <option value="">Selecione</option>
+    <option value=""> </option>
     <option>Gasolina</option>
     <option>Etanol</option>
     <option>Diesel</option>
