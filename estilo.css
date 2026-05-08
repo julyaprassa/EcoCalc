@@ -48,6 +48,38 @@ p {
     background-color: #1b5e20;
 }
 
+/* botão questionário */
+.botaocampo {
+    background-color: #2e7d32;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    transition: 0.3s;
+    display: block;
+    margin-top: 20px;        /* espaço entre select e botão */
+}
+
+.botaocampo:hover {
+    background-color: #1b5e20;
+}
+
+.botaovoltar {
+    background-color: transparent;
+    color: #ffffff;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 5px;
+    padding: 7px 25px;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.botaovoltar:hover {
+  transform: translateX(-3px);     /* leve movimento para a esquerda */
+}
+
+
 /* card */
 .card {
     background-color: white;
@@ -114,3 +146,62 @@ form.questionario-form .questionario-select {
     font-weight: 500;
     color: #555; 
 }
+
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  height: 100%;
+  width: 250px;
+  background: #2e7d32;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+  transition: right 0.3s ease;
+  z-index: 1001;
+  border-radius: 12px 0 0 12px;
+}
+
+#afmenu:checked ~ .menu {
+  right: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  z-index: 1000;
+}
+
+#afmenu:checked ~ .overlay {
+  display: block;
+}
+
+.menu a {
+  color: #fff;
+  padding: 12px;
+  text-decoration: none;
+  border-radius: 8px;
+  margin: 4px 8px;
+}
+
+.menu a:hover {
+  background: #e5ffe7;
+}
+
+.fechar {
+  color: #fff;
+  font-size: 22px;
+  padding: 12px;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  border-radius: 8px; 
+  margin: 0;
+}
+
