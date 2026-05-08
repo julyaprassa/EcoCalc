@@ -89,6 +89,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body>
+    <button onclick="history.back()" class="botaovoltar">
+    ← Voltar
+    </button>
+    
     <div class="w3-container w3-padding-64">
         <div class="w3-content" style="max-width:500px">
             <div class="card">
