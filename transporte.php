@@ -73,7 +73,7 @@
     </select>
 
 <br>
-    <button type="submit" class="botao" style= "text-decoration: none;">
+    <button type="submit" class="botaocampo" style= "text-decoration: none;">
     Próximo →
     </button>
     
