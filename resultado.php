@@ -15,12 +15,13 @@
 <body>
 
     <div class="topo w3-bar">
-    <span class="w3-bar-item w3-xlarge">EcoCalc</span>
+    <a href="paginainicial.php" class="w3-bar-item w3-xlarge" style="text-decoration:none;">
+    EcoCalc </a>
     <a href="conta.php" class="w3-bar-item w3-button w3-right">Minha Conta</a>
     </div>
 
   <div class="w3-container w3-padding-64">
-    <div class="w3-content" style="max-width:700px">
+    <div class="w3-content" style="max-width:1100px">
 
       <div class="card">
         <h2 class="titulo">Resultados</h2>
@@ -36,19 +37,24 @@
       </div>
 
       <!-- Gráfico -->
-      <canvas id="graficoEmissoes"></canvas>
+      <div class="resultado-container">
 
-      <!-- Recomendações -->
-      <div class="recomendacoes">
-        <h3>Recomendações:</h3>
-        <ul>
-          <li>Prefira transporte coletivo ou bicicleta para reduzir emissões.</li>
-          <li>Troque lâmpadas comuns por LED.</li>
-          <li>Considere energia solar para diminuir impacto da conta de luz.</li>
-        </ul>
-      </div>
+  <!-- Gráfico -->
+  <div class="grafico">
+    <canvas id="graficoEmissoes" width="300" height="300"></canvas>
+  </div>
 
-    </div>
+  <!-- Recomendações -->
+  <div class="recomendacoes">
+    <h3>Recomendações:</h3>
+    <ul>
+      <li>Prefira transporte coletivo ou bicicleta para reduzir emissões.</li>
+      <li>Troque lâmpadas comuns por LED.</li>
+      <li>Considere energia solar para diminuir impacto da conta de luz.</li>
+    </ul>
+  </div>
+
+</div>
   </div>
 
   <script>
@@ -62,14 +68,19 @@
           backgroundColor: ['#2e7d32', '#66bb6a']
         }]
       },
+
+      // de preferência nao mexam aqui!
       options: {
-        responsive: true,
+        responsive: false,
+      
         plugins: {
-          legend: { position: 'bottom' }
+            legend: {
+                position: 'bottom'
+            }
         }
-      }
-    });
-  </script>
+    }
+});
+</script>
   
 </body>
 </html>

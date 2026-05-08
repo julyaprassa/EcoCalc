@@ -1,7 +1,7 @@
 <?php
-// ============================================================
+//
 //  conta.php — Perfil e histórico de cálculos do usuário
-// ============================================================
+//
 session_start();
 
 // Protege a página: redireciona se não estiver logado
@@ -70,7 +70,8 @@ $conn->close();
 <body>
 
     <div class="topo w3-bar">
-        <span class="w3-bar-item w3-xlarge">EcoCalc</span>
+        <a href="paginainicial.php" class="w3-bar-item w3-xlarge" style="text-decoration:none;">
+        EcoCalc </a>
         <a href="logout.php" class="w3-bar-item w3-button w3-right">Sair</a>
     </div>
 
