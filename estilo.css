@@ -1,0 +1,269 @@
+/* fundo */
+body {
+    font-family: 'Poppins';
+    background-color: #f5f7f6;
+    margin: 0;
+}
+
+/* titulos */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins';
+    font-weight: 600;
+    color: #2e7d32;
+}
+
+/* explicações (paragrafos)*/
+p {
+    font-weight: 400;
+    color: #555;
+    font-size: 20px; }
+
+/* menu */
+.topo {
+    background: #2e7d32;
+    color: white;
+    padding: 15px;
+}
+
+/* botão do menu (cadastro e login) */
+.w3-bar .w3-button {
+    border-radius: 20px;
+}
+
+.w3-bar .w3-button:hover {
+    background-color: #1b5e20 !important;
+    color: white !important;
+}
+
+/* botões */
+.botao {
+    background-color: #2e7d32;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.botao:hover {
+    background-color: #1b5e20;
+}
+
+/* botão questionário */
+.botaocampo {
+    background-color: #2e7d32;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    transition: 0.3s;
+    display: block;
+    margin-top: 20px;        /* espaço entre select e botão */
+}
+
+.botaocampo:hover {
+    background-color: #1b5e20;
+}
+
+.botaovoltar {
+    background-color: transparent;
+    color: #ffffff;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 5px;
+    padding: 7px 25px;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.botaovoltar:hover {
+  transform: translateX(-3px);
+}
+
+
+/* card */
+.card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+/* formulário */
+form label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* formulário */
+.input {
+    display: block; 
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    transition: 0.3s;
+    box-sizing: border-box;
+}
+
+
+.input:focus {
+    border-color: #2e7d32;
+    box-shadow: 0, 0, 6px rgb(46,125,50,0.3);
+}
+
+/* estilo questionario */
+form.questionario-form .questionario-input,
+form.questionario-form .questionario-select {
+    width: 220px !important; 
+    padding: 10px !important;       
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+form.questionario-form .questionario-input:focus,
+form.questionario-form .questionario-select:focus {
+    border-color: #2e7d32;
+    box-shadow: 0 0 6px rgba(46,125,50,0.3);
+}
+
+form.questionario-form .questionario-select {
+    appearance: none;
+    background-color: #fff;
+}
+
+.questionario-form label {
+    font-size: 17px;
+    font-weight: 500;
+    color: #555; 
+}
+
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  height: 100%;
+  width: 250px;
+  background: #2e7d32;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+  transition: right 0.3s ease;
+  z-index: 1001;
+  border-radius: 12px 0 0 12px;
+}
+
+#afmenu:checked ~ .menu {
+  right: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  z-index: 1000;
+}
+
+#afmenu:checked ~ .overlay {
+  display: block;
+}
+
+.menu a {
+  color: #fff;
+  padding: 12px;
+  text-decoration: none;
+  border-radius: 8px;
+  margin: 4px 8px;
+}
+
+.menu a:hover {
+  background: #e5ffe7;
+}
+
+.fechar {
+  color: #fff;
+  font-size: 22px;
+  padding: 12px;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  border-radius: 8px; 
+  margin: 0;
+}
+
+.resultado-container{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.grafico{
+    width: 300px;
+}
+
+.grafico canvas{
+    width: 300px !important;
+    height: 300px !important;
+}
+
+.recomendacoes{
+    width: 500px;
+}
+
+/* lista do histórico */
+.historicolista{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.historicoitem{
+    background-color: #f8f8f8;
+    border-radius: 18px;
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.historicoitem:hover{
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.12);
+}
+
+.botaohist{
+    background-color: #2e7d32;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 25px;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.botaohist:hover{
+    background-color: #1b5e20;
+}
+
