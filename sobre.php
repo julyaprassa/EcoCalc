@@ -32,7 +32,6 @@
     </label>
     <a href="conta.php" class="w3-bar-item w3-button">Minha Conta</a>
     <a href="historico.php" class="w3-bar-item w3-button">Histórico</a>
-    <a href="configuracoes.php" class="w3-bar-item w3-button">Configurações</a>
     <a href="sobre.php" class="w3-bar-item w3-button">Sobre</a>
   </nav>
   </div>
