@@ -43,12 +43,7 @@
       <p>
       O EcoCalc foi desenvolvido como um Trabalho de Conclusão de Curso do Técnico em Desenvolvimento de Sistemas.
       </p>
-      <p>
-      O site tem como objetivo mostrar de forma prática a pegada de carbono pessoal, calculando as emissões de CO₂ a partir dos hábitos de transporte e do uso de energia em casa.
-      </p>
-      <p>
-      Além de apresentar os resultados em gráficos, o EcoCalc dá dicas simples e úteis para ajudar cada pessoa a reduzir seu impacto no meio ambiente.
-      </p>
+     
 </div>
 
   <div class="w3-content card" style="max-width:900px">
