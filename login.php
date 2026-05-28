@@ -1,12 +1,10 @@
 <?php
-// ============================================================
-//  login.php — Autenticação de usuários
-// ============================================================
+
 session_start();
 
 // Redireciona se já estiver logado
 if (!empty($_SESSION['usuario_id'])) {
-    header('Location: paginainicial.php');
+    header('Location: index.php');
     exit;
 }
 
@@ -40,14 +38,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Login bem-sucedido
                 session_regenerate_id(true); // Previne session fixation
 
-                $_SESSION['usuario_id'] = $usuario['id'];
-                $_SESSION['nome']       = $usuario['nome'];
-                $_SESSION['email']      = $usuario['email'];
+                $_SESSION['usuario_id']   = $usuario['id'];
+                $_SESSION['usuario_nome'] = $usuario['nome'];
+                $_SESSION['usuario_email'] = $usuario['email'];
+
 
                 $stmt->close();
                 $conn->close();
 
-                header('Location: paginainicial.php');
+                header('Location: index.php');
                 exit;
             } else {
                 $erro = 'E-mail ou senha incorretos.';

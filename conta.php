@@ -69,11 +69,29 @@ $conn->close();
 </head>
 <body>
 
-    <div class="topo w3-bar">
-        <a href="paginainicial.php" class="w3-bar-item w3-xlarge" style="text-decoration:none;">
-        EcoCalc </a>
-        <a href="logout.php" class="w3-bar-item w3-button w3-right">Sair</a>
+   <div class="topo w3-bar">
+
+    <a href="index.php"
+       class="w3-bar-item w3-xlarge"
+       style="text-decoration:none;">
+        EcoCalc
+    </a>
+
+<div class="w3-right">
+
+<a href="confirmar_exclusao.php"
+   class="w3-bar-item w3-button">
+    Excluir Conta
+</a>
+
+        <a href="logout.php"
+           class="w3-bar-item w3-button">
+            Sair
+        </a>
+
     </div>
+
+</div>
 
     <div class="w3-container w3-padding-64">
         <div class="w3-content" style="max-width:750px">

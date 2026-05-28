@@ -1,7 +1,5 @@
 <?php
-// ============================================================
-//  cadastro.php — Cadastro de novos usuários
-// ============================================================
+
 session_start();
 
 // Redireciona se já estiver logado
@@ -17,13 +15,12 @@ $sucesso = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // --- Coleta e sanitização dos dados ---
     $nome            = trim($_POST['nome']            ?? '');
     $email           = trim($_POST['email']           ?? '');
     $senha           = $_POST['senha']                ?? '';
     $confirmar_senha = $_POST['confirmar_senha']      ?? '';
 
-    // --- Validações ---
+    // Validações
     if (empty($nome) || empty($email) || empty($senha) || empty($confirmar_senha)) {
         $erro = 'Preencha todos os campos.';
 

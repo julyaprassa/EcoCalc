@@ -16,7 +16,7 @@
 <body>
 
   <div class="topo w3-bar">
-    <a href="paginainicial.php" class="w3-bar-item w3-xlarge" style="text-decoration:none;">
+    <a href="index.php" class="w3-bar-item w3-xlarge" style="text-decoration:none;">
     EcoCalc </a>
     <label for="afmenu" class="w3-bar-item w3-button w3-right">
     <i class="fa fa-bars"></i>
